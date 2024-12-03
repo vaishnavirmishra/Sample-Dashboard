@@ -66,56 +66,31 @@ export default function Dashboard() {
   const [weeklyData, setWeeklyData] = useState([]);
   const [recentBookings, setRecentBookings] = useState([]);
   const [topServices, setTopServices] = useState([]);
-  const [isLoading , setIsLoading] = useState(null)
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
-    // Fetch hourly data
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/hourlydata`)
-      .then((response) => {
-        setHourlyData(response.data);
+    // Fetch all data concurrently
+    Promise.all([
+      axios.get(`${import.meta.env.VITE_API_URL}/api/hourlydata`),
+      axios.get(`${import.meta.env.VITE_API_URL}/api/weeklydata`),
+      axios.get(`${import.meta.env.VITE_API_URL}/api/recentbookings`),
+      axios.get(`${import.meta.env.VITE_API_URL}/api/topservices`)
+    ])
+      .then(([hourlyResponse, weeklyResponse, recentBookingsResponse, topServicesResponse]) => {
+        setHourlyData(hourlyResponse.data);
+        setWeeklyData(weeklyResponse.data);
+        setRecentBookings(recentBookingsResponse.data);
+        setTopServices(topServicesResponse.data);
+        setIsLoading(false); // Set loading to false after all data is fetched
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        setIsLoading(false); // Set loading to false even if there's an error
       });
-
-    // Fetch weekly data
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/weeklydata`)
-      .then((response) => {
-        setWeeklyData(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching weekly data:", error);
-      });
-
-    // Fetch recent bookings
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/recentbookings`)
-      .then((response) => {
-        setRecentBookings(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching recent bookings:", error);
-      });
-
-    // Fetch top services
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/topservices`)
-      .then((response) => {
-        setTopServices(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching top services:", error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      })
   }, []);
-
-  if (isLoading){
-    return <div>Loading...</div>;
+  
+  if (isLoading) {
+    return <div className="flex h-screen justify-center items-center text-2xl font-semibold">Loading...</div>;
   }
 
   return (
