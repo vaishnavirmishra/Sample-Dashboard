@@ -12,7 +12,7 @@ function Header() {
     <div className="w-full  px-10 h-16 flex items-center justify-between  ">
       {/* Logo */}
       <div className="flex items-start gap-2">
-        <img src="../../../public/logo.png" className="h-[50px]" alt="icon" />
+        <img src="/logo.png" className="h-[50px]" alt="icon" />
       </div>
 
       {/* Search Bar */}
