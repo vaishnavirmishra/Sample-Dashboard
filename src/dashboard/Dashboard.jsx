@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import {
   Bar,
   BarChart,
@@ -67,11 +66,13 @@ export default function Dashboard() {
   const [weeklyData, setWeeklyData] = useState([]);
   const [recentBookings, setRecentBookings] = useState([]);
   const [topServices, setTopServices] = useState([]);
+  const [isLoading , setIsLoading] = useState(null)
 
   useEffect(() => {
+    setIsLoading(true);
     // Fetch hourly data
     axios
-      .get("http://localhost:3000/api/hourlydata")
+      .get(`${import.meta.env.VITE_API_URL}/api/hourlydata`)
       .then((response) => {
         setHourlyData(response.data);
       })
@@ -81,7 +82,7 @@ export default function Dashboard() {
 
     // Fetch weekly data
     axios
-      .get("http://localhost:3000/api/weeklydata")
+      .get(`${import.meta.env.VITE_API_URL}/api/weeklydata`)
       .then((response) => {
         setWeeklyData(response.data);
       })
@@ -91,7 +92,7 @@ export default function Dashboard() {
 
     // Fetch recent bookings
     axios
-      .get("http://localhost:3000/api/recentbookings")
+      .get(`${import.meta.env.VITE_API_URL}/api/recentbookings`)
       .then((response) => {
         setRecentBookings(response.data);
       })
@@ -101,14 +102,22 @@ export default function Dashboard() {
 
     // Fetch top services
     axios
-      .get("http://localhost:3000/api/topservices")
+      .get(`${import.meta.env.VITE_API_URL}/api/topservices`)
       .then((response) => {
         setTopServices(response.data);
       })
       .catch((error) => {
         console.error("Error fetching top services:", error);
-      });
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
   }, []);
+
+  if (isLoading){
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       {/* Header Section */}
