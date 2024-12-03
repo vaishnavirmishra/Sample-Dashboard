@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
-import User from "./components/pages/users/users";
+import User from "./components/pages/users/Users";
 import AddUsers from "./components/pages/users/AddUser";
 import EditUser from "./components/pages/users/EditUser";
 import Partners from "./components/pages/partners/Partners";
