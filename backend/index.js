@@ -4,6 +4,7 @@ const ApiFeatures = require("./utils/apiFeatures");
 const express = require("express");
 const cors = require("cors");
 const { CloudDownload } = require("lucide-react");
+const dotenv = require("dotenv");
 
 //sample data
 let orders = require("./sampleData/orderData");
@@ -15,11 +16,15 @@ let appointmentsData = require("./sampleData/appointmentData");
 let disputeData = require("./sampleData/disputeData");
 let messageData = require("./sampleData/messageData");
 
+dotenv.config();
+
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT;
+
 
 app.use(cors());
 app.use(express.json());
+
 
 // Sample Data
 const hourlyData = [
