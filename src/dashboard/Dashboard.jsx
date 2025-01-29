@@ -395,7 +395,7 @@ export default function Dashboard() {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {recentBookings?.map((booking) => (
+                      {recentBookings ? recentBookings?.map((booking) => (
                         <TableRow key={booking.name}>
                           <TableCell className="font-medium">
                             {booking.name}
@@ -414,7 +414,7 @@ export default function Dashboard() {
                             </span>
                           </TableCell>
                         </TableRow>
-                      ))}
+                      )) : null}
                     </TableBody>
                   </Table>
                 </CardContent>
@@ -434,7 +434,7 @@ export default function Dashboard() {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {topServices?.map((service) => (
+                      {topServices ? topServices?.map((service) => (
                         <TableRow key={service.name}>
                           <TableCell className="font-medium">
                             <div className="flex items-center gap-2">
@@ -449,7 +449,7 @@ export default function Dashboard() {
                           <TableCell>{service.price}</TableCell>
                           <TableCell>{service.bookings}</TableCell>
                         </TableRow>
-                      ))}
+                      )) : null}
                     </TableBody>
                   </Table>
                 </CardContent>
