@@ -81,7 +81,7 @@ export default function User() {
                 setSelectedUser([]);
                 setIsAllSelected(false);
             } else {
-                setSelectedUser(userPerPage.users.map((user) => user.userId));
+                setSelectedUser(userPerPage?.users.map((user) => user.userId));
                 setIsAllSelected(true);
             }
         } catch(err){
@@ -341,7 +341,7 @@ export default function User() {
                                     </TableRow>
                                     </TableHeader>
                                     <TableBody>
-                                    {userPerPage.users && userPerPage.users.length>0 ? (userPerPage.users.map((user) => (
+                                    {userPerPage?.users && userPerPage?.users.length>0 ? (userPerPage?.users.map((user) => (
                                         <TableRow key={user.userId}>
                                         <TableCell className="font-medium">
                                             <label className='flex items-center'>
