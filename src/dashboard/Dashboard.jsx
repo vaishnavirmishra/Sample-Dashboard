@@ -395,7 +395,7 @@ export default function Dashboard() {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {recentBookings ? recentBookings?.map((booking) => (
+                      {recentBookings && Array.isArray(recentBookings) ? recentBookings?.map((booking) => (
                         <TableRow key={booking.name}>
                           <TableCell className="font-medium">
                             {booking.name}
@@ -434,7 +434,7 @@ export default function Dashboard() {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {topServices ? topServices?.map((service) => (
+                      {topServices && Array.isArray(topServices) ? topServices?.map((service) => (
                         <TableRow key={service.name}>
                           <TableCell className="font-medium">
                             <div className="flex items-center gap-2">
