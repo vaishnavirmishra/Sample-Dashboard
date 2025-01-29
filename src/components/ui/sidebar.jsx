@@ -22,7 +22,7 @@ function Sidebar() {
     const inactiveClass = 'w-full justify-start gap-2 text-gray-600 hover:bg-gray-50'
   return (
     <div
-        className="hidden w-64 flex-col border-r bg-white px-3 py-4 lg:flex"
+        className="flex w-64 flex-col border-r bg-white px-3 py-4 fixed mt-20"
         style={{ backgroundColor: "#f3f4f6" }}
         >
         <div className="space-y-1 bg">
@@ -30,30 +30,22 @@ function Sidebar() {
                 <Home className="h-4 w-4" />
                 Dashboard
             </NavLink>
-            <NavLink to="/user" className={({isActive}) => `${isActive ? activeClass : inactiveClass} flex items-center p-3 rounded-md text-sm font-semibold`}>
+            <NavLink to="/student" className={({isActive}) => `${isActive ? activeClass : inactiveClass} flex items-center p-3 rounded-md text-sm font-semibold`}>
             <Users2 className="h-4 w-4" />
-                Users
+                Students
             </NavLink>
-            <NavLink to="/partners" className={({isActive}) => `${isActive ? activeClass : inactiveClass} flex items-center p-3 rounded-md text-sm font-semibold`}>
+            <NavLink to="/teachers" className={({isActive}) => `${isActive ? activeClass : inactiveClass} flex items-center p-3 rounded-md text-sm font-semibold`}>
                 
                 <Building2 className="h-4 w-4" />
-                    Partners
+                    Teachers
             </NavLink>
-            <NavLink to="/appointments" className={({isActive}) => `${isActive ? activeClass : inactiveClass} flex items-center p-3 rounded-md text-sm font-semibold`}>
+            <NavLink to="/subjects" className={({isActive}) => `${isActive ? activeClass : inactiveClass} flex items-center p-3 rounded-md text-sm font-semibold`}>
                 <Calendar className="h-4 w-4" />
-                Appointments
+                Subjects
             </NavLink>
             <NavLink to="/reports" className={({isActive}) => `${isActive ? activeClass : inactiveClass} flex items-center p-3 rounded-md text-sm font-semibold`}>
                 <BarChart3 className="h-4 w-4" />
                 Reports
-            </NavLink>
-            <NavLink to="/payments" className={({isActive}) => `${isActive ? activeClass : inactiveClass} flex items-center p-3 rounded-md text-sm font-semibold`}>
-                <Wallet className="h-4 w-4" />
-                Payments
-            </NavLink>
-            <NavLink to="/feedbacks" className={({isActive}) => `${isActive ? activeClass : inactiveClass} flex items-center p-3 rounded-md text-sm font-semibold`}>
-                <Star className="h-4 w-4" />
-                Feedback & Reviews
             </NavLink>
             <NavLink to="/dispute-resolution" className={({isActive}) => `${isActive ? activeClass : inactiveClass} flex items-center p-3 rounded-md text-sm font-semibold`}>
                 <MessageSquare className="h-4 w-4" />

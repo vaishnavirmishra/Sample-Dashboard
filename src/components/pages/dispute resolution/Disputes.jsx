@@ -146,7 +146,7 @@ function templateCode() {
         <Sidebar />
 
         {/* Main */}
-        <div className='flex-1'>
+        <div className='flex-1 mt-20 ml-64'>
             <main className="p-6">
                 {/* Header */}
                 <div className="flex items-center justify-between">

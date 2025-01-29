@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FiSearch,
   FiMessageSquare,
   FiBell,
   FiChevronDown,
 } from "react-icons/fi";
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
+  const [dropVisible, setDropVisible] = useState(false);
+  const navigate = useNavigate();
+
+  function toggleDropDown() {
+    setDropVisible((prev) => !prev);
+  }
+
+  function handleLogout() {
+    localStorage.removeItem('token');
+    navigate('/signin')
+  }
+  
   return (
-    <header className="border-b shadow-sm bg-white ">
+    <header className="border-b shadow-sm bg-white fixed w-full z-[99]">
     <div className="w-full  px-10 h-16 flex items-center justify-between  ">
       {/* Logo */}
       <div className="flex items-start gap-2">
@@ -47,9 +60,14 @@ function Header() {
               alt="User"
               className="w-8 h-8 rounded-full"
             />
-            <span className="text-gray-700">User</span>
+            <span className="text-gray-700">Admin</span>
           </div>
-          <FiChevronDown className="w-4 h-4 text-gray-400 ml-[20px]" />
+          <FiChevronDown className="w-4 h-4 text-gray-400 ml-[20px]" onClick={toggleDropDown} />
+          {dropVisible && (
+            <div className='absolute mt-36 shadow-md right-12 cursor-pointer bg-white rounded-md px-16 py-6'>
+              <p className='text-red-500 hover:text-underline' onClick={handleLogout}>Logout</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

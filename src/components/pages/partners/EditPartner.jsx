@@ -121,19 +121,19 @@ function EditPartner() {
       <div className="flex flex-row items-start justify-between ">
         {/* Sidebar */}
         <Sidebar />
-        <div className="flex-1">
+        <div className="flex-1 mt-20 ml-64">
         {/* Patrner information */}
         <main className='p-6'>
           <div className="flex items-center justify-between text-sm">
             <div>
-              <Link to="/partners" className='flex items-center text-gray-400 hover:text-black'>
+              <Link to="/teachers" className='flex items-center text-gray-400 hover:text-black'>
                 <FaArrowLeft />
                 <span className="pl-2">Back</span>
               </Link>
               <h1 className="text-2xl font-semibold"> Partner Information</h1>
             </div>
             <div className="w-auto flex justify-around">
-              <Link to="/partners">
+              <Link to="/teachers">
                 <Button className="w-auto bg-[white] text-[#1abc9c] vorder-2 mr-3 border-2" variant="secondary">
                   Cancel
                 </Button>

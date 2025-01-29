@@ -30,10 +30,10 @@ import Header from '@/components/ui/header';
 import Sidebar from '@/components/ui/sidebar';
 
 
-function Partners() {
+function Teachers() {
     const navigate = useNavigate()
     const [partnerStats, setPartnerStats] = useState([]);
-    const [partnersPerPage, setPartnersPerPage] = useState({});
+    const [partnersPerPage, setTeachersPerPage] = useState({});
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPage, setTotalPage] = useState(0);
     const [status, setStatus] = useState("");
@@ -62,7 +62,7 @@ function Partners() {
                 }
             })
             .then((response) => {
-                setPartnersPerPage(response.data);
+                setTeachersPerPage(response.data);
                 setTotalPage(response.data.totalPages);
             })
             .catch((err) => {
@@ -112,7 +112,7 @@ function Partners() {
     }
 
     //bulk deleting selected users
-    async function deleteSelectedPartners(){
+    async function deleteSelectedTeachers(){
         if (selectedPartner.length===0){
             alert("No user was selected");
             return;
@@ -122,7 +122,7 @@ function Partners() {
             const response = await axios.post(`http://localhost:3000/api/partners/delete`, {partnerIds: selectedPartner});
             setSelectedPartner([]);
             alert("Selected partners deleted");
-            navigate("/partners");
+            navigate("/teachers");
         } catch(err){
             console.error(err);
         }
@@ -139,7 +139,7 @@ function Partners() {
         }
 
         const partnerId = selectedPartner[0];
-        navigate(`/partners/edit/${partnerId}`);
+        navigate(`/teachers/edit/${partnerId}`);
     }
 
   return (
@@ -150,11 +150,11 @@ function Partners() {
             {/* Sidebar */}
             <Sidebar />
             {/* Main Content */}
-            <div className='flex-1'>
+            <div className='flex-1 ml-64 mt-20'>
                 <main className="p-6">
                     {/* Header */}
                     <div className="flex items-center justify-between">
-                        <h1 className="text-2xl font-semibold">Partners</h1>
+                        <h1 className="text-2xl font-semibold">Teachers</h1>
                         <Button
                             variant="secondary"
                             className="w-auto bg-[white] text-[#1abc9c] border-2"
@@ -173,7 +173,7 @@ function Partners() {
                             </CardHeader>
                             <CardContent>
                             <div className="text-sem font-semibold text-gray-500 pb-2">
-                                Total Partners
+                                Total Teachers
                             </div>
                             <div className="flex items-center   gap-4">
                                 <span className="text-green-600 text-md">22.45%</span>
@@ -202,7 +202,7 @@ function Partners() {
                             </CardHeader>
                             <CardContent>
                             <div className="text-sm font-semibold text-gray-500 pb-2">
-                                Active Partners
+                                Active Teachers
                             </div>
                             <div className="flex items-center text-md text-green-600 gap-4">
                                 <span>15.34%</span>
@@ -232,7 +232,7 @@ function Partners() {
                             </CardHeader>
                             <CardContent>
                             <div className="text-sm font-semibold text-gray-500 pb-2">
-                                Inactive Partners
+                                Inactive Teachers
                             </div>
                             <div className="flex items-center text-md text-red-600 gap-4">
                                 <span>18.25%</span>
@@ -260,7 +260,7 @@ function Partners() {
                             </CardHeader>
                             <CardContent>
                             <div className="text-sm font-semibold text-gray-500 pb-2">
-                                Suspended Partners
+                                Suspended Teachers
                             </div>
                             <div className="flex items-center text-md text-green-600 gap-4">
                                 <span>10.24%</span>
@@ -313,7 +313,7 @@ function Partners() {
                                         <RiEditLine className='border-2 mx-1 h-9 w-9 p-2 rounded-md cursor-pointer'
                                             onClick={editSelectedPartner}/>
                                         <FiTrash className='border-2 mx-1 h-9 w-9 p-2 rounded-md cursor-pointer'
-                                            onClick = {deleteSelectedPartners}
+                                            onClick = {deleteSelectedTeachers}
                                         />
                                     </div>
                                 </div>
@@ -325,11 +325,11 @@ function Partners() {
                                         <TableHead>
                                             <label className='flex items-center'>
                                                 <input type="checkbox" className='mx-2 h-4 w-4' checked={isAllSelected} onChange={handleSelectAll} />
-                                                <span>Partner Id</span>
+                                                <span>Teacher Id</span>
                                             </label>
                                         </TableHead>
                                         <TableHead>Email</TableHead>
-                                        <TableHead>Business Name</TableHead>
+                                        <TableHead>Subject Name</TableHead>
                                         <TableHead>Onwer Name</TableHead>
                                         <TableHead>Phone Number</TableHead>
                                         <TableHead>Status</TableHead>
@@ -418,4 +418,4 @@ function Partners() {
   )
 }
 
-export default Partners
+export default Teachers

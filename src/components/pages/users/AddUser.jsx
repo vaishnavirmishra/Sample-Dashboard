@@ -5,8 +5,6 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableHead,
-  TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -51,8 +49,8 @@ export default function AddUsers(){
     
     try {
       const response = await axios.post("http://localhost:3000/api/user/add", formData);
-      navigate("/user");
-      alert("User added successfully");
+      navigate("/student");
+      alert("Student added successfully");
     } catch (error) {
       console.error("Error saving user data", error);
     }
@@ -68,20 +66,20 @@ export default function AddUsers(){
             {/* Sidebar */}
             <Sidebar />
             {/* Main */}
-            <div className="flex-1">
+            <div className="flex-1 ml-64 mt-20">
                 {/* User Content */}
                 <main className="p-6">
                   <form onSubmit = {handleSubmit}>
                     <div className="flex items-center justify-between text-sm">
                       <div>
-                          <Link to="/user" className='flex items-center text-gray-400 hover:text-black'>
+                          <Link to="/student" className='flex items-center text-gray-400 hover:text-black'>
                             <FaArrowLeft />
                             <span className='pl-2'>Back</span>
                           </Link>
                         <h1 className="text-2xl font-semibold">Add User</h1>
                       </div>
                     <div className='w-auto flex justify-around'>
-                      <Link to="/user">
+                      <Link to="/student">
                         <Button
                         variant="secondary"
                         className="w-auto bg-[white] text-[#1abc9c] border-2 mr-3"

@@ -93,6 +93,10 @@ export default function Dashboard() {
     return <div className="flex h-screen justify-center items-center text-2xl font-semibold">Loading...</div>;
   }
 
+  if (!hourlyData || !weeklyData || !recentBookings || !topServices) {
+    return <div className="flex h-screen justify-center items-center text-2xl font-semibold">Error loading data.</div>;
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       {/* Header Section */}
@@ -101,7 +105,7 @@ export default function Dashboard() {
         {/* Sidebar */}
         <Sidebar />
         {/* Main Content */}
-        <div className="flex-1">
+        <div className="flex-1 ml-64 mt-20">
           {/* Dashboard Content */}
           <main className="p-6">
             <div className="flex items-center justify-between">
@@ -120,7 +124,7 @@ export default function Dashboard() {
 
             {/* Stats */}
             <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4">
-              <Card className="h-[150px] rounded-tl-lg rounded-bl-lg rounded-tr-none rounded-br-none relative border-none relative overflow-hidden">
+              <Card className="h-[150px] rounded-tl-lg rounded-bl-lg rounded-tr-none rounded-br-none border-none relative overflow-hidden">
                 <div className="h-full w-[1.3px] bg-gray-100 absolute right-0 top-0"></div>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-1 relative">
                   <CardTitle className="text-2xl font-semibold">
@@ -158,7 +162,7 @@ export default function Dashboard() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-sm font-bold text-gray-500 pb-2">
-                    Bookings
+                    Admissions
                   </div>
                   <div className="flex items-center text-md text-green-600 gap-4">
                     <span>15.34%</span>
@@ -215,7 +219,7 @@ export default function Dashboard() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-sm font-bold text-gray-500 pb-2">
-                    Active Users
+                    Active Students
                   </div>
                   <div className="flex items-center text-md text-green-600 gap-4">
                     <span>10.24%</span>
@@ -339,12 +343,10 @@ export default function Dashboard() {
               {/* Last 7 Days Bookings Card */}
               <Card className="w-full sm:w-[75%] ml-auto border-none">
                 <CardHeader>
-                  <CardTitle className="mb-8">Last 7 Days Bookings</CardTitle>
+                  <CardTitle className="mb-8">Last 7 Days Performances</CardTitle>
                   <div className="mt-10">
                     <div className="text-2xl font-bold">1,259</div>
-                    <div className="text-sm text-gray-500">Bookings</div>
-                    <div className="mt-4 text-2xl font-bold">$12,546</div>
-                    <div className="text-sm text-gray-500">Revenue</div>
+                    <div className="text-sm text-gray-500">Marks</div>
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -380,7 +382,7 @@ export default function Dashboard() {
             <div className="mt-6 grid gap-6 lg:grid-cols-2">
               <Card className="border-none">
                 <CardHeader>
-                  <CardTitle>Recent Bookings</CardTitle>
+                  <CardTitle>Recent Admissions</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <Table>
@@ -420,15 +422,15 @@ export default function Dashboard() {
 
               <Card className="border-none">
                 <CardHeader>
-                  <CardTitle>Top Services by Units Booked</CardTitle>
+                  <CardTitle>Top Teachers</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <Table>
                     <TableHeader>
                       <TableRow>
                         <TableHead>Name</TableHead>
-                        <TableHead>Price (Avg)</TableHead>
-                        <TableHead>No. of Bookings</TableHead>
+                        <TableHead>Strike Rate</TableHead>
+                        <TableHead>No. of Classes</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>

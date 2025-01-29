@@ -127,7 +127,7 @@ function Report() {
         <div className="flex flex-row items-start justify-between ">
             {/* Sidebar */}
             <Sidebar />
-            <div className="flex-1">
+            <div className="flex-1 mt-20 ml-64">
                 <main className="p-6">
                     <div className='flex items-center justify-between mb-6'>
                         <h1 className='text-2xl font-semibold'>Reports</h1>
@@ -141,7 +141,7 @@ function Report() {
                             <Card>
                                 <CardHeader>
                                     <div className='flex items-center justify-between mb-0 pb-0'>
-                                        <CardContent className='font-semibold text-lg'>Customer Growth</CardContent>
+                                        <CardContent className='font-semibold text-lg'>Student & Teacher Growth</CardContent>
                                         <Select defaultValue="last12">
                                             <SelectTrigger className="w-[180px]">
                                                 <SelectValue placeholder="Select time period" />
@@ -316,7 +316,7 @@ function Report() {
                         <div className='col-span-1'>
                             <Card className='h-[350px]'>
                                 <CardHeader className="font-semibold">
-                                    Users Goal
+                                    Students Goal
                                 </CardHeader>
                                 <CardContent className="h-[200px]">
                                     <ResponsiveContainer width="100%" height="100%">
@@ -420,7 +420,7 @@ function Report() {
                         <div className="col-span-2">
                             <Card className="h-[350px]">
                                 <CardHeader className="font-semibold">
-                                    <div>Average Spend on Servie per month</div>
+                                    <div>Average Spend on Service per month</div>
                                     <div className='text-sm text-black font-semibold flex gap-3'>
                                         <div className='flex items-center gap-2'> <div className='text-gray-600 font-normal'>This Month</div> $48.20 </div>
                                         <div className='flex items-center gap-2'> <div className='text-gray-600 font-normal'>Previous Month</div> $48.20 </div>
@@ -460,13 +460,13 @@ function Report() {
                         </div>
                         <div className='col-span-2'>
                             <Card className="border-none">
-                            <CardHeader className='font-semibold'>Top Customers</CardHeader>
+                            <CardHeader className='font-semibold'>Top Students</CardHeader>
                                 <CardContent>
                                 <Table>
                                     <TableHeader>
                                     <TableRow>
                                         <TableHead>Name</TableHead>
-                                        <TableHead>Bookings</TableHead>
+                                        <TableHead>Average %</TableHead>
                                         <TableHead>Spent</TableHead>
                                     </TableRow>
                                     </TableHeader>
@@ -494,14 +494,14 @@ function Report() {
                         </div>
                         <div className='col-span-2'>
                             <Card className="border-none">
-                            <CardHeader className='font-semibold'>Top Services by Units Booked</CardHeader>
+                            <CardHeader className='font-semibold'>Top Teachers</CardHeader>
                                 <CardContent>
                                 <Table>
                                     <TableHeader>
                                     <TableRow>
                                         <TableHead>Name</TableHead>
-                                        <TableHead>Price (Avg)</TableHead>
-                                        <TableHead>No. of Bookings</TableHead>
+                                        <TableHead>Strike Rate</TableHead>
+                                        <TableHead>No. of Classes</TableHead>
                                     </TableRow>
                                     </TableHeader>
                                     <TableBody>

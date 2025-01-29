@@ -7,11 +7,14 @@ import EditUser from "./components/pages/users/EditUser";
 import Partners from "./components/pages/partners/Partners";
 import EditPartner from "./components/pages/partners/EditPartner";
 import Appointments from "./components/pages/appointments/Appointments";
-import Payments from "./components/pages/payments/Payments";
 import Disputes from "./components/pages/dispute resolution/Disputes";
 import Chats from "./components/pages/dispute resolution/Chats";
-import Feedback from "./components/pages/feedback/Feedbacks";
 import Report from "./components/pages/report/Report";
+import PrivateRoute from "./components/pages/auth/PrivateRoute";
+import Sign from "./components/pages/auth/Login";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 function App() {
   return (
@@ -19,19 +22,19 @@ function App() {
       <Router>
         <Routes>
           {/* Default redirection to /signin */}
-          <Route path="/" element={<Navigate to="/dashboard" />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/user" element={<User />} />
-          <Route path="/user/add" element={<AddUsers />} />
-          <Route path="/user/edit/:id" element={<EditUser />} />
-          <Route path="/partners" element={<Partners />} />
-          <Route path="/partners/edit/:id" element={<EditPartner />} />
-          <Route path="/appointments" element={<Appointments />} />
-          <Route path="/payments" element={<Payments />} />
-          <Route path="/dispute-resolution" element={<Disputes />} />
-          <Route path="/disputes/chats" element={<Chats />} />
-          <Route path="/feedbacks" element={<Feedback />} />
-          <Route path="/reports" element={<Report />} />
+          <Route path="/signin" element={<Sign />} />
+          <Route path="/" element={<PrivateRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/student" element={<User />} />
+            <Route path="/student/add" element={<AddUsers />} />
+            <Route path="/student/edit/:id" element={<EditUser />} />
+            <Route path="/teachers" element={<Partners />} />
+            <Route path="/teachers/edit/:id" element={<EditPartner />} />
+            <Route path="/subjects" element={<Appointments />} />
+            <Route path="/dispute-resolution" element={<Disputes />} />
+            <Route path="/disputes/chats" element={<Chats />} />
+            <Route path="/reports" element={<Report />} />
+          </Route>
         </Routes>
       </Router>
     </div>

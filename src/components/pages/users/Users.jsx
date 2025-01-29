@@ -123,8 +123,6 @@ export default function User() {
         }
     }
 
-    console.log(selectedUser)
-
     function editSelectedUser(){
         if (selectedUser.length===0){
             alert("No user was selected");
@@ -135,7 +133,7 @@ export default function User() {
         }
 
         const userId = selectedUser[0];
-        navigate(`/user/edit/${userId}`);
+        navigate(`/student/edit/${userId}`);
     }
 
   return (
@@ -145,19 +143,19 @@ export default function User() {
             {/* Sidebar */}
             <Sidebar />
             {/* Main Content */}
-            <div className="flex-1">
+            <div className="flex-1 ml-64 mt-20">
                 {/* User Content */}
                 <main className="p-6">
                     <div className="flex items-center justify-between">
-                    <h1 className="text-2xl font-semibold">Users</h1>
+                    <h1 className="text-2xl font-semibold">Students</h1>
                     <div className='w-[250px] flex justify-evenly'>
-                    <Link to="/user/add">
+                    <Link to="/student/add">
                         <Button
                         variant="secondary"
                         className="w-auto bg-[#1abc9c] text-white hover:text-[#1abc9c] hover:border-2 hover:bg-white"
                         >
                             <FiPlus />
-                            Add User
+                            Add Student
                         </Button>
                     </Link>
                     <Button

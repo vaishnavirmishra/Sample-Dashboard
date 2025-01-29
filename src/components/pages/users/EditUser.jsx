@@ -119,19 +119,19 @@ const EditUser = () => {
         <div className="flex flex-row items-start justify-between">
             {/* Sidebar */}
             <Sidebar />
-            <div className="flex-1">
+            <div className="flex-1 mt-20 ml-64">
                 {/* User Content */}
                 <main className="p-6">
                     <div className="flex items-center justify-between text-sm">
                         <div>
-                            <Link to="/user" className='flex items-center text-gray-400 hover:text-black'>
+                            <Link to="/student" className='flex items-center text-gray-400 hover:text-black'>
                                 <FaArrowLeft />
                                 <span className='pl-2'>Back</span>
                             </Link>
                             <h1 className="text-2xl font-semibold">User Information</h1>
                         </div>
                         <div className='w-auto flex justify-around'>
-                        <Link to="/user">
+                        <Link to="/student">
                             <Button
                             variant="secondary"
                             className="w-auto bg-[white] text-[#1abc9c] border-2 mr-3"

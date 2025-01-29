@@ -118,7 +118,7 @@ function Appointment() {
             const response = await axios.post("http://localhost:3000/api/appointments/delete", {appointmentIds: selectedAppointment});
             setSelectedAppointment([]);
             alert("Selected appointments deleted");
-            navigate("/appointments");
+            navigate("/subjects");
         } catch(err){
             console.error(err);
         }
@@ -132,7 +132,7 @@ function Appointment() {
         {/* Sidebar */}
         <Sidebar />
         {/* Main */}
-        <div className='flex-1'>
+        <div className='flex-1 mt-20 ml-64'>
             <main className="p-6">
                 {/* Header */}
                 <div className="flex items-center justify-between">
@@ -307,15 +307,11 @@ function Appointment() {
                                     <TableHead>
                                         <label className='flex items-center'>
                                             <input type="checkbox" className='mx-2 h-4 w-4' checked={isAllSelected} onChange={handleSelectAll} />
-                                            <span>Appointment Id</span>
+                                            <span>Subject Id</span>
                                         </label>
                                     </TableHead>
-                                    <TableHead>User Name</TableHead>
-                                    <TableHead>Salon Name</TableHead>
-                                    <TableHead>Service/Package</TableHead>
+                                    <TableHead>Subject Name</TableHead>
                                     <TableHead>Status</TableHead>
-                                    <TableHead>Booking Date</TableHead>
-                                    <TableHead>Payment</TableHead>
                                 </TableRow>
                                 </TableHeader>
                                 <TableBody>
@@ -332,8 +328,6 @@ function Appointment() {
                                         </label>
                                     </TableCell>
                                     <TableCell>{appointment.userName}</TableCell>
-                                    <TableCell>{appointment.salonName}</TableCell>
-                                    <TableCell>{appointment.serviceOrPackage}</TableCell>
                                     <TableCell>
                                         <span className={`inline-flex items-center rounded-md px-4 py-1 text-white text-md ${
                                             appointment.status === 'Scheduled'
@@ -345,12 +339,6 @@ function Appointment() {
                                             : 'bg-black'
                                         }`}>
                                             {appointment.status}
-                                        </span>
-                                    </TableCell>
-                                    <TableCell>{appointment.bookingDate}</TableCell>
-                                    <TableCell>
-                                        <span className='bg-green-600 flex text-white px-4 justify-center py-1 items-center rounded-md w-[100px]'>
-                                            {appointment.paid ? "Paid" : "Not Paid"}
                                         </span>
                                     </TableCell>
                                     </TableRow>
